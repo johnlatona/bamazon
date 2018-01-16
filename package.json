@@ -1,0 +1,24 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnlatona/bamazon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnlatona/bamazon/issues"
+  },
+  "homepage": "https://github.com/johnlatona/bamazon#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "inquirer": "^5.0.0",
+    "mysql": "^2.15.0"
+  }
+}

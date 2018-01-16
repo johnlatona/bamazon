@@ -1,1 +1,9 @@
 # bamazon
+
+##Summary
+
+**Bamazon** is a simple CLI online shopping node.js app that mimicks the functionality of amazon. The app connects to a predefined table in MySQL called bamazon. It pulls info regarding which items are for sale, the price of the item, and the item ID associated with the items from the table at the start of the app and displays it to the user. The user can choose which product he/she wants to purchase by typing in the Item ID associated with the product. Once the user picks an item, they will be prompted how many of the item selected they want to buy. The app will then display the total purchase price of their order. This is done by taking the price of the item they selected to buy and multiplying it by the quantity they chose to buy. The database will be updated each time the customer submits an order, taking the quantity they purchased and subtracting it from the stock_quantity in the database. 
+
+The app employs numerous checks on the data submitted by the user. If the stock quantity of any given item reaches 0, the app will prompt that the item they chose is out of stock. When the user is inputting an item ID, the app will not let them enter any other character except a number, and will also not let them input any number that does not exist as an item ID. When the user chooses a quantity of an item to buy, the app will not let the user input any number that is greater than the stock quantity of that particular item. 
+
+The app utilizes multiple connections to MySQL to ensure the connections are pure and are only long enough to process the request submitted. 
