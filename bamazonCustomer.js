@@ -16,6 +16,7 @@ var timeout = setTimeout(function() {
 
 console.log("\nWelcome to BAMAZON! We're like Amazon...but Better!\n".bold);
 
+//connects to mySQL database
 function connect() {
 	connection1 = mysql.createConnection({
 	  host: "localhost",
@@ -34,6 +35,7 @@ function connect() {
 	});
 }
 
+//displays all products available for sale in the database
 function displayProducts() {
 	itemsForSale = [];
 	itemAmounts = [];
@@ -62,6 +64,7 @@ function displayProducts() {
 	}, 500);
 }
 
+//uses inquirer to prompt the user which item they'd like to buy
 function purchaseProduct() {
 	var itemSelection;
 
@@ -73,9 +76,11 @@ function purchaseProduct() {
 		name: "confirmPurchase"
 	}
 	]).then(function(purchaseResponse) {
+		//exits the program if the user does not want to buy anything
 		if(purchaseResponse.confirmPurchase === "No") {
 			console.log("\nOk, please come back again!".bold + "\n");
 		}
+		//if they do want to buy something, it asks them to enter the item ID of what they'd like to buy, which the program uses to find the appropriate item in the database
 		else{
 			chooseItem();
 			function chooseItem() {
@@ -102,7 +107,6 @@ function purchaseProduct() {
 					}
 					else {
 						chooseQuantity();
-
 						function chooseQuantity() {
 							inquirer.prompt([
 							{
@@ -139,6 +143,7 @@ function purchaseProduct() {
 									connection2.connect(function(err) {
 										if (err) throw err;
 									});
+									//connects to database and subtracts the amount of products the user wants to buy from the database. 
 									connection2.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [itemAmounts[itemSelection - 1] - quantity, itemSelection],
 										function(err, results) {
 											if (err) throw err;
